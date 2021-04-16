@@ -1,8 +1,21 @@
-class User {
-    constructor(name, avatar) {
-        this.name = name 
-        this.avatar = avatar
-    }
+const Tasks = require('./tasks.js')
+const {sequelize, DataTypes, Model} = require('../db');
+
+class User extends Model {
+
 }
 
-module.exports = User
+User.init({
+name:DataTypes.STRING,
+avatar:DataTypes.STRING,
+}, {
+    sequelize,
+    timestamps: false,
+});
+
+User.hasMany(Task, {as: 'tasks'})
+Task.belongsTo(User)
+
+module.exports = {
+    User 
+};
