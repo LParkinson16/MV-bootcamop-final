@@ -8,7 +8,7 @@ Task.init(
   },
   options
 );
-Task.belongsTo(User);
+
 module.exports = Task;
 
 
