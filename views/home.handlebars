@@ -1,0 +1,16 @@
+<title>All Projects</title>
+<h1>All Projects</h1>
+<html lang="en">
+    <a href="/newproject">Add project</a>
+<script src="/server.js"></script>
+<section>
+    {{#each projects}}
+        <a href="/projects/{{this.id}}">
+            <article>
+                <main>{{this.name}}</main>
+                <footer>{{this.user}} users</footer>
+            </article>
+        </a>
+    {{/each}}
+</section>
+</html>

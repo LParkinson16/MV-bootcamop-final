@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* css defaults for mobile devices */
+h1 {
+    padding: 1rem;
+    border-bottom: solid 1px black;
+}
+article {
+    border: solid 1px black;   /* adds a border around the box */
+    width: calc(100% - 2rem);
+    height: 35em;
+    margin: 1rem 1rem;
+}
+
+article header {
+    height: 24rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+/* put css styling for  
+   mobile devices here */
+
+@media screen and (min-width: 40em) {
+    /* css overrides for mid-sized screens goes here */
+    section {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: none;
+        gap: 1rem;
+    }
+    article {
+        margin: 0;
+        width: 100%;
+    }
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+  /* put css styling for mid-sized screens here */
+}
+
+@media screen and (min-width: 60em) {
+
+    body {
+        background-color: rgba(107, 95, 102, 0.26);
+    }
+  /* put css styling for massive screens here */
+    section {
+        grid-template-columns: auto auto auto;
+}
+}

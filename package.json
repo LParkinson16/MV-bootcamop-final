@@ -1,0 +1,32 @@
+{
+  "name": "mv-bootcamp-final",
+  "version": "1.0.0",
+  "description": "jest",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LParkinson16/MV-bootcamp-final.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LParkinson16/MV-bootcamp-final/issues"
+  },
+  "homepage": "https://github.com/LParkinson16/MV-bootcamp-final#readme",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.0",
+    "handlebars": "^4.7.7",
+    "jest": "^26.6.3",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {}
+}

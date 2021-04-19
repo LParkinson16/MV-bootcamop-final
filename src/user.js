@@ -1,4 +1,4 @@
-const Tasks = require('./tasks.js')
+const Task = require('./task.js')
 const {sequelize, DataTypes, Model} = require('../db');
 
 class User extends Model {
@@ -6,16 +6,15 @@ class User extends Model {
 }
 
 User.init({
-name:DataTypes.STRING,
-avatar:DataTypes.STRING,
-}, {
-    sequelize,
+    name: { 
+        type: DataTypes.STRING},
+    avatar: {
+        type: DataTypes.STRING}, 
+}, {sequelize,
     timestamps: false,
 });
 
-User.hasMany(Task, {as: 'tasks'})
+User.hasMany(Task)
 Task.belongsTo(User)
 
-module.exports = {
-    User 
-};
+module.exports = User 
