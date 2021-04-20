@@ -24,9 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-  const projects = await Project.findAll({
-    include: [User],
-  });
+  const projects = await Project.findAll(
+);
   res.render("home", { projects });
 });
 
@@ -34,7 +33,7 @@ app.get("/projects/new", async (req, res) => {
   res.render("newProject");
 });
 
-app.post("/project", async (req, res) => {
+app.post("/projects", async (req, res) => {
   await Project.create(req.body);
   res.redirect("/");
 });
@@ -47,6 +46,12 @@ app.post("/tasks", async (req, res) => {
   await Task.create(req.body);
   res.redirect("newTask");
 });
+
+app.get("/projects/:id", async (req, res) => {
+    const project = await Project.findByPk(req.params.id);
+    const tasks = await Project.getTasks()
+    res.render()
+})
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
