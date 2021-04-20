@@ -9,7 +9,6 @@ const Task = require("./src/task");
 const Project = require("./src/project");
 const User = require("./src/user");
 const { sequelize } = require("./src/db");
-const { getgid } = require("node:process");
 const handlebars = expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
