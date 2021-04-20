@@ -44,8 +44,7 @@ app.get("/tasks/new", async (req, res) => {
 });
 
 app.post("/tasks", async (req, res) => {
-  console.log(req.body);
-  await Tasks.create(req.body);
+  await Task.create(req.body);
   res.redirect("newTask");
 });
 
