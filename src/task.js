@@ -4,6 +4,7 @@ class Task extends Model {}
 Task.init(
   {
     description: DataTypes.STRING,
+    state: DataTypes.STRING
   },
   options
 );

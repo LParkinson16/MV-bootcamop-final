@@ -15,7 +15,7 @@ Project.init(
   }
 );
 
-Project.hasMany(User);
-User.belongsTo(Project);
+Project.hasMany(Task);
+Task.belongsTo(Project);
 
 module.exports = Project;
