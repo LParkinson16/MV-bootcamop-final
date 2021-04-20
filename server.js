@@ -8,7 +8,7 @@ const {
 const Task = require("./src/task");
 const Project = require("./src/project");
 const User = require("./src/user");
-const { sequelize } = require("./db");
+const { sequelize } = require("./src/db");
 const handlebars = expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
