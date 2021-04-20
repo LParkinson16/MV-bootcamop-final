@@ -1,8 +1,8 @@
 <h2>Add new task</h2>
 
-<form action="/add" method="POST">
-    <label>Task Description</label><br>
-    <input type="text" name="description" placeholder="Enter description" required><br>
+<form action="/tasks/new" method="POST">
+    <label for="description">Task Description</label><br>
+    <input id= "description" type="text" name="description" placeholder="Enter description" required><br>
 
     <label>Assigned To</label><br>
     <select name="users" id="users">

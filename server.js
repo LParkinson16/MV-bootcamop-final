@@ -25,21 +25,16 @@ app.use(express.json());
 
 app.get('/', async (req, res) => {
     const projects = await Project.findAll({
-        include: [
-            {
-                model: User, as: 'users',
-            }
-        ],
-        nest: true
+        include: [User]
     })
     res.render('home', {projects})
 });
 
-app.get('/newproject', async (req, res) => {
+app.get('/projects/new', async (req, res) => {
     res.render('newproject')
 })
 
-app.post("/newproject", async (req, res) => {
+app.post("/project", async (req, res) => {
     await Project.create(req.body);
     res.redirect("/");
   });

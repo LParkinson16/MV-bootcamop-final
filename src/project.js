@@ -6,10 +6,11 @@ class Project extends Model {
 
 }
 
-Project.init({
-name:DataTypes.STRING,
-description:DataTypes.STRING,
-}, {
+Project.init(
+    {
+        name:DataTypes.STRING,
+        description:DataTypes.STRING,
+    }, {
     sequelize,
     timestamps: false,
 });
