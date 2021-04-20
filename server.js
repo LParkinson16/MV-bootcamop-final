@@ -5,7 +5,7 @@ const expressHandlebars = require("express-handlebars");
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
-const Tasks = require("./src/task");
+const Task = require("./src/task");
 const Project = require("./src/project");
 const User = require("./src/user");
 const { sequelize } = require("./src/db");
@@ -46,8 +46,7 @@ app.get("/tasks/new", async (req, res) => {
 });
 
 app.post("/tasks", async (req, res) => {
-  console.log(req.body);
-  await Tasks.create(req.body);
+  await Task.create(req.body);
   res.redirect("newTask");
 });
 
