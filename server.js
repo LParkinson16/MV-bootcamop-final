@@ -88,25 +88,25 @@ app.post("/projects", async (req, res) => {
 });
 
 app.get("/users/new", async (req, res) => {
-    res.render("newUser");
-  });
+  res.render("newUser");
+});
 
 app.post("/users", async (req, res) => {
-    await User.create(req.body);
-    res.redirect("/");
-  });
-
-app.get("/tasks/new", async (req, res) => {
-  res.render("newTask");
+  await User.create(req.body);
+  res.redirect("/");
 });
+
+// app.get("/tasks/new", async (req, res) => {
+//   res.render("newTask");
+// });
 
 app.post("/projects/:id/tasks", async (req, res) => {
   const projectId = req.params.id;
   await Task.create({
     description: req.body.description,
-    state: 'todo',
+    state: "todo",
     ProjectId: projectId,
-    UserId: req.body.UserId
+    UserId: req.body.UserId,
   });
   res.redirect(`/projects/${projectId}`);
 });
@@ -119,18 +119,25 @@ app.get("/tasks/:id", async (req, res) => {
 app.get("/projects/:id", async (req, res) => {
   const project = await Project.findByPk(req.params.id);
   const tasks = await project.getTasks({
-      include: [User]
+    include: [User],
   });
   const users = await User.findAll();
   const columns = {
     todo: [],
     inProgress: [],
-    done: []
-  }
+    done: [],
+  };
   for (const task of tasks) {
     columns[task.state].push(task);
   }
   res.render("project", { project, columns, users });
+});
+
+app.get("/tasks/:taskId/delete", async (req, res) => {
+  const task = await Task.findByPk(req.params.taskId);
+  const projectId = task.ProjectId;
+  task.destroy();
+  res.redirect(`/projects/${projectId}`);
 });
 
 app.listen(port, () => {
