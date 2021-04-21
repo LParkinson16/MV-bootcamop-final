@@ -92,10 +92,14 @@ app.get("/tasks/new", async (req, res) => {
   res.render("newTask");
 });
 
-app.post("/tasks", async (req, res) => {
-  const task = await Task.create(req.body);
-  console.log(task);
-  res.render("project"); // ie project.handlebars
+app.post("/projects/:id/tasks", async (req, res) => {
+  const projectId = req.params.id;
+  await Task.create({
+    description: req.body.description,
+    state: 'todo',
+    ProjectId: projectId
+  });
+  res.redirect(`/projects/${projectId}`);
 });
 
 app.get("/tasks/:id", async (req, res) => {
