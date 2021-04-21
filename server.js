@@ -48,6 +48,14 @@ async function seedData() {
     description: "brush teeth",
     state: "done",
   });
+  const user1 = await User.create({
+    name: "Shazeen",
+    avatar: "www.image.com",
+  });
+  const user2 = await User.create({
+    name: "Sophia",
+    avatar: "www.image2.com",
+  });
 
   await project1.addTasks([task1, task2, task4, task5]);
   await project2.addTask(task3);
@@ -97,7 +105,8 @@ app.post("/projects/:id/tasks", async (req, res) => {
   await Task.create({
     description: req.body.description,
     state: 'todo',
-    ProjectId: projectId
+    ProjectId: projectId,
+    UserId: req.body.UserId
   });
   res.redirect(`/projects/${projectId}`);
 });
@@ -109,7 +118,10 @@ app.get("/tasks/:id", async (req, res) => {
 
 app.get("/projects/:id", async (req, res) => {
   const project = await Project.findByPk(req.params.id);
-  const tasks = await project.getTasks();
+  const tasks = await project.getTasks({
+      include: [User]
+  });
+  const users = await User.findAll();
   const columns = {
     todo: [],
     inProgress: [],
@@ -118,7 +130,7 @@ app.get("/projects/:id", async (req, res) => {
   for (const task of tasks) {
     columns[task.state].push(task);
   }
-  res.render("project", { project, columns });
+  res.render("project", { project, columns, users });
 });
 
 app.listen(port, () => {
