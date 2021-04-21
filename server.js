@@ -55,6 +55,15 @@ app.post("/projects", async (req, res) => {
   res.redirect("/");
 });
 
+app.get("/users/new", async (req, res) => {
+    res.render("newUser");
+  });
+
+app.post("/users", async (req, res) => {
+    await User.create(req.body);
+    res.redirect("/");
+  });
+
 app.get("/tasks/new", async (req, res) => {
   res.render("newTask");
 });

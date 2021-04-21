@@ -4,6 +4,21 @@
 <div class="app">
   <div class="containers">
 
+<div class="container" id="toDoDiv">
+  <h2>Users</h2>
+  <a href="/users/new">
+    <button>Add user</button>
+  </a>
+  <section>
+    {{#each users}}
+      <article>
+        <header style="background-image url({{this.avatar}});">
+        <main>{{this.name}}</main>
+        </header>
+      </article>
+    {{/each}}
+  </section>
+</div>
 
 <div class="container" id="toDoDiv">
   <h2>To-Do</h2>
