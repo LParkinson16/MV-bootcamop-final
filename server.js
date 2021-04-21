@@ -29,19 +29,27 @@ async function seedData() {
   });
 
   const task1 = await Task.create({
-    description: "task1Description",
-    state: "To-Do",
+    description: "Log some OTJ",
+    state: "todo",
   });
   const task2 = await Task.create({
-    description: "task2Description",
-    state: "In-Progress",
+    description: "book my 1 to 1",
+    state: "inProgress",
   });
   const task3 = await Task.create({
     description: "task3Description",
-    state: "To-Do",
+    state: "todo",
+  });
+  const task4 = await Task.create({
+    description: "check my emails",
+    state: "done",
+  });
+  const task5 = await Task.create({
+    description: "brush teeth",
+    state: "done",
   });
 
-  await project1.addTasks([task1, task2]);
+  await project1.addTasks([task1, task2, task4, task5]);
   await project2.addTask(task3);
 }
 
@@ -85,9 +93,9 @@ app.get("/tasks/new", async (req, res) => {
 });
 
 app.post("/tasks", async (req, res) => {
-  await Task.create(req.body);
-  // res.redirect("/project");
-  res.render("project/:id");
+  const task = await Task.create(req.body);
+  console.log(task);
+  res.render("project"); // ie project.handlebars
 });
 
 app.get("/tasks/:id", async (req, res) => {
@@ -98,7 +106,15 @@ app.get("/tasks/:id", async (req, res) => {
 app.get("/projects/:id", async (req, res) => {
   const project = await Project.findByPk(req.params.id);
   const tasks = await project.getTasks();
-  res.render("project", { project, tasks });
+  const columns = {
+    todo: [],
+    inProgress: [],
+    done: []
+  }
+  for (const task of tasks) {
+    columns[task.state].push(task);
+  }
+  res.render("project", { project, columns });
 });
 
 app.listen(port, () => {

@@ -9,7 +9,7 @@
   <a href="/tasks/new">
     <button>Add task</button>
   </a>
-    {{#each tasks}}
+    {{#each columns.todo}}
       <div class="task" taskId="{{this.id}}">
         <p>{{this.description}}</p>
       </div>
@@ -18,12 +18,20 @@
 
 <div class="container">
   <h2>In progress</h2>
-
+    {{#each columns.inProgress}}
+      <div class="task" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
+      </div>
+    {{/each}}
 </div>
 
 <div class="container">
   <h2>Completed</h2>
-
+      {{#each columns.done}}
+      <div class="task" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
+      </div>
+    {{/each}}
 </div>
 
 
