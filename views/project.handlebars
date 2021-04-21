@@ -1,47 +1,41 @@
 <header>
-<h1>Project.name</h1>
+  <h1>{{project.name}}</h1>
 </header>
 <div class="app">
   <div class="containers">
 
 <div class="container" id="toDoDiv">
-  <h2>Users</h2>
-  <a href="/users/new">
-    <button>Add user</button>
-  </a>
-  <section>
-    {{#each users}}
-      <article>
-        <header style="background-image url({{this.avatar}});">
-        <main>{{this.name}}</main>
-        </header>
-      </article>
-    {{/each}}
-  </section>
-</div>
-
-<div class="container" id="toDoDiv">
   <h2>To-Do</h2>
-  <a href="/tasks/new">
-    <button>Add task</button>
-      </a> 
-       <a href="/tasks/{{this.id}}">
-    <div>
-      <p>{{this.description}}</p>
-      <p>{{this.state}}</p>
-    </div>
-    </a>
-
+  <form action="/projects/{{project.id}}/tasks" method="POST">
+    <label>
+      Description:
+      <input type="text" name="description">
+    </label>
+    <button type="submit">Add task</button>
+  </form>
+    {{#each columns.todo}}
+      <div class="task" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
+      </div>
+    {{/each}}
 </div>
 
 <div class="container">
   <h2>In progress</h2>
-
+    {{#each columns.inProgress}}
+      <div class="task" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
+      </div>
+    {{/each}}
 </div>
 
 <div class="container">
   <h2>Completed</h2>
-
+      {{#each columns.done}}
+      <div class="task" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
+      </div>
+    {{/each}}
 </div>
 
 
