@@ -1,16 +1,17 @@
 <h2>Add new task</h2>
 
-<form action="/tasks/new" method="POST">
+<form action="/tasks" method="POST">
     <label for="description">Task Description</label><br>
     <input id= "description" type="text" name="description" placeholder="Enter description" required><br>
 
     <label>Assigned To</label><br>
+     <select name="userId" id="userId">
+      <option value="1">user1</option>
+        </select>
+     {{!-- {{#each user}}
     <select name="users" id="users">
-      <option value="1">user 1</option>
-      <option value="2">user 2</option>
-      <option value="3">user 3</option>
-      <option value="4">user 4</option>
+      <option value="user/{{this.id}}">{{this.name}}</option>
     </select>
-
+  {{/each}} --}}
     <input type="submit" value="Submit">
 </form>
