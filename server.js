@@ -13,55 +13,7 @@ const handlebars = expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 
-async function seedData() {
-  await sequelize.sync({ force: true });
-  const project1 = await Project.create({
-    name: "Test1",
-    description: "description1",
-  });
-  const project2 = await Project.create({
-    name: "Test2",
-    description: "description2",
-  });
-  const project3 = await Project.create({
-    name: "Test3",
-    description: "description3",
-  });
-
-  const task1 = await Task.create({
-    description: "Log some OTJ",
-    state: "todo",
-  });
-  const task2 = await Task.create({
-    description: "book my 1 to 1",
-    state: "inProgress",
-  });
-  const task3 = await Task.create({
-    description: "task3Description",
-    state: "todo",
-  });
-  const task4 = await Task.create({
-    description: "check my emails",
-    state: "done",
-  });
-  const task5 = await Task.create({
-    description: "brush teeth",
-    state: "done",
-  });
-  const user1 = await User.create({
-    name: "Shazeen",
-    avatar: "www.image.com",
-  });
-  const user2 = await User.create({
-    name: "Sophia",
-    avatar: "www.image2.com",
-  });
-
-  await project1.addTasks([task1, task2, task4, task5]);
-  await project2.addTask(task3);
-}
-
-seedData();
+sequelize.sync();
 
 const app = express();
 const port = 4000;
@@ -96,10 +48,6 @@ app.post("/users", async (req, res) => {
   res.redirect("/");
 });
 
-// app.get("/tasks/new", async (req, res) => {
-//   res.render("newTask");
-// });
-
 app.post("/projects/:id/tasks", async (req, res) => {
   const projectId = req.params.id;
   await Task.create({
@@ -110,6 +58,10 @@ app.post("/projects/:id/tasks", async (req, res) => {
   });
   res.redirect(`/projects/${projectId}`);
 });
+
+const dragStart = (event) => {
+  event.target.className += 'hold';
+}
 
 app.get("/tasks/:id", async (req, res) => {
   const task = await Task.findByPk(req.params.id);
@@ -143,3 +95,4 @@ app.get("/tasks/:taskId/delete", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
+
