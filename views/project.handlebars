@@ -1,19 +1,11 @@
-<header>
+ <button class="project-btn"><a href="/">All projects</a></button>
   <h1>{{project.name}}</h1><br>
-  </header>
-  <p id="desc">{{project.description}}</p>
-  <a href="/">
-      <button>All projects</button>
-  </a>
-<div class="app">
-  <div class="containers">
-    
-<div class="container" id="toDoDiv" state="todo">
-  <h2>To-Do</h2>
-  <form action="/projects/{{project.id}}/tasks" method="POST">
+  <p id="desc">{{project.description}}</p><br>
+     
+      <form class="add-task-form" action="/projects/{{project.id}}/tasks" method="POST">
     <label>
       Description:
-      <input type="text" name="description">
+      <input type="text" name="description"><br>
     </label><br>
     <label>Assigned To:
       <select name="UserId" id="UserId">
@@ -21,16 +13,21 @@
       <option name="UserId" value={{this.id}}>{{this.name}}</option>
         {{/each}}
       </select>
-    </label>
-    <button type="submit">Add task</button>
+    </label><br>
+    <br><button class="add-btn" type="submit">Add task</button>
   </form>
+
+<div class="app">
+  <div class="containers">
+    
+<div class="container" id="toDoDiv" state="todo">
+  <h2>To-Do</h2>
     {{#each columns.todo}}
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
-         <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
+         <p>  <img class= "img" src="{{this.User.avatar}}"> {{this.User.name}}</p> 
          <a href="/tasks/{{this.id}}/delete">❌</a> 
          <a href="/tasks/{{this.id}}/edit">Edit</a>
-
       </div>
     {{/each}}
 </div>

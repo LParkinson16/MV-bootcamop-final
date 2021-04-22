@@ -1,15 +1,18 @@
-<h2>To-Do</h2>
+<h1>Update task</h1>
+<div class="task-card">
   <form action="/tasks/{{task.id}}/edit" method="POST">
     <label>
       Description:
-      <input value ="{{task.description}}" type="text" name="description">
+     <br> <input value ="{{task.description}}" type="text" name="description">
     </label><br>
-    <label>Assigned To:
-      <select name="UserId" id="UserId">
+    <label>
+      Assigned To: <br>
+     <br> <select name="UserId" id="UserId">
         {{#each users}}
       <option name="UserId" value={{this.id}}>{{this.name}}</option>
         {{/each}}
       </select>
-    </label>
-    <button type="submit">Update task</button>
+    </label><br>
+    <button class="update-btn" type="submit">Update task</button>
   </form>
+  </div>
