@@ -41,7 +41,6 @@ function getDragAfterElement(container, y) {
   }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
-//
 tasks.forEach(task => {
   task.addEventListener('drop', async (event) => {
     const taskId = event.currentTarget.getAttribute("taskid");

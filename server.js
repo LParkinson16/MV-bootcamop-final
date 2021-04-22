@@ -98,11 +98,6 @@ app.get("/projects/:id/delete", async (req, res) => {
   res.redirect(`/`);
 });
 
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
-
-//
 app.patch('/tasks/:taskId', async (req, res) => {
   const id = req.params.taskId;
   const newColumn = req.body.column;
@@ -125,4 +120,8 @@ app.post("/tasks/:id/edit", async (req, res) => {
   const projectId = task.ProjectId;
   await task.update(req.body);
   res.redirect(`/projects/${projectId}`);
+});
+
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
 });
