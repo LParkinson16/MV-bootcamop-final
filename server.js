@@ -92,6 +92,12 @@ app.get("/tasks/:taskId/delete", async (req, res) => {
   res.redirect(`/projects/${projectId}`);
 });
 
+app.get("/projects/:id/delete", async (req, res) => {
+  const project = await Project.findByPk(req.params.id);
+  project.destroy();
+  res.redirect(`/`);
+});
+
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
