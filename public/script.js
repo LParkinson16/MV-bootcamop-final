@@ -1,7 +1,7 @@
 const draggables = document.querySelectorAll('.draggable')
 const containers = document.querySelectorAll('.container')
 const toDo = document.querySelector('#toDoDiv')
-
+const tasks = document.querySelectorAll('.task')
 
 //making elements draggable
 draggables.forEach(draggable => {
@@ -42,13 +42,15 @@ function getDragAfterElement(container, y) {
 }
 
 //
-const task = Task.findByPk(req.params.taskId)
-task.addEventListener('drop', async (event) => {
-  const taskId = event.currentTarget.attribute.taskId;
-  const column = event.currentTarget.parent.attribute.state;
-  fetch(`/tasks/${taskId}`, {
-      method: 'PATCH',
-      'content-type': 'application/json',
-      body: JSON.stringify({ column })
-  })
-});
+tasks.forEach(task => {
+  task.addEventListener('drop', async (event) => {
+    const taskId = event.currentTarget.getAttribute("taskid");
+    const column = event.currentTarget.parentNode.getAttribute("state");
+    fetch(`/tasks/${taskId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'},    
+        body: JSON.stringify({ column })
+    })
+  });
+})

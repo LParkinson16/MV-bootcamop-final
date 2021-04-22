@@ -103,11 +103,14 @@ app.listen(port, () => {
 });
 
 //
-app.patch('/tasks/:taskId', (req, res) => {
+app.patch('/tasks/:taskId', async (req, res) => {
   const id = req.params.taskId;
   const newColumn = req.body.column;
-  const task = Task.findByPk(id);
-  task.column = newColumn;
-  task.update();
+  console.log(newColumn)
+  const task = await Task.findByPk(id);
+  console.log(task)
+  task.state = newColumn;
+  await task.save();
+  console.log(task)
   res.sendStatus(200);
 });

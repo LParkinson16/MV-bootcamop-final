@@ -8,7 +8,7 @@
 <div class="app">
   <div class="containers">
     
-<div class="container" id="toDoDiv">
+<div class="container" id="toDoDiv" state="todo">
   <h2>To-Do</h2>
   <form action="/projects/{{project.id}}/tasks" method="POST">
     <label>
@@ -33,20 +33,24 @@
     {{/each}}
 </div>
 
-<div class="container">
+<div class="container" state="inProgress">
   <h2>In progress</h2>
     {{#each columns.inProgress}}
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
+        <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
+         <a href="/tasks/{{this.id}}/delete">❌</a> 
       </div>
     {{/each}}
 </div>
 
-<div class="container">
-  <h2>Completed</h2>
+<div class="container" state="done">
+  <h2>Done</h2>
       {{#each columns.done}}
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
+        <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
+         <a href="/tasks/{{this.id}}/delete">❌</a> 
       </div>
     {{/each}}
 </div>
