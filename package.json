@@ -28,5 +28,7 @@
     "sequelize": "^6.6.2",
     "sqlite3": "^5.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cypress": "^7.1.0"
+  }
 }
