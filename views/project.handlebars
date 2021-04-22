@@ -25,9 +25,10 @@
     <button type="submit">Add task</button>
   </form>
     {{#each columns.todo}}
-      <div class="draggable task" taskId="{{this.id}}">
+      <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
         <p>{{this.User.name}}</p>
+         <a href="/tasks/{{this.id}}/delete">❌</a> 
       </div>
     {{/each}}
 </div>
@@ -35,9 +36,8 @@
 <div class="container">
   <h2>In progress</h2>
     {{#each columns.inProgress}}
-      <div class="task" taskId="{{this.id}}">
-        <p class="draggable" draggable="true" contenteditable="true"
->{{this.description}}</p>
+      <div class="draggable task" draggable="true" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
       </div>
     {{/each}}
 </div>
@@ -45,9 +45,8 @@
 <div class="container">
   <h2>Completed</h2>
       {{#each columns.done}}
-      <div class="task" taskId="{{this.id}}">
-        <p class="draggable" draggable="true" contenteditable="true"
->{{this.description}}</p>
+      <div class="draggable task" draggable="true" taskId="{{this.id}}">
+        <p>{{this.description}}</p>
       </div>
     {{/each}}
 </div>
