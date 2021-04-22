@@ -9,6 +9,14 @@ body {
   font-family: "Roboto", Helvetica, sans-serif;
 }
 
+p {
+  font: "Arial";
+}
+
+#desc {
+  text-align: center;
+}
+
 .app {
   display: flex;
   width: 100vw;
@@ -22,6 +30,7 @@ header {
   align-items: center;
   height: 60px;
 }
+
 
 .containers {
   display: flex;
@@ -62,6 +71,19 @@ header {
   width: 30px;
   border-radius: 50%;
 }
+
+section {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: none;
+  gap: 1rem;
+}
+article {
+  margin: 0;
+  width: 100%;
+}
+
 
 /*comment 
   /* css overrides for mid-sized screens goes here */

@@ -2,17 +2,20 @@
 <h1>All Projects</h1>
 <html lang="en">
     <a href="/projects/new">Add project</a>
-<a href="users/new">
+<a href="users/new"></a>
     <button>Add New User</button>
-<section>
-    {{#each projects}}
-        <a href="/projects/{{this.id}}">
+{{#each projects}}
+    <section>
+        <div class="container"> 
+            <a href="/projects/{{this.id}}">
+                <p>{{this.name}}</p>
+            </a><br>
             <article>
-                <main>{{this.name}}</main>
-                <footer>{{this.description}}</footer>
-                    <a href="/projects/{{this.id}}/delete">❌</a>
+                <p>{{this.description}}</p>
+                <a href="/projects/{{this.id}}/delete">❌</a>
             </article>
-        </a>
-    {{/each}}
-</section>
+        </div>
+        </section>
+{{/each}}
+
 </html>
