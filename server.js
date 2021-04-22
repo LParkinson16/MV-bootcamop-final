@@ -60,8 +60,8 @@ app.post("/projects/:id/tasks", async (req, res) => {
 });
 
 const dragStart = (event) => {
-  event.target.className += 'hold';
-}
+  event.target.className += "hold";
+};
 
 app.get("/tasks/:id", async (req, res) => {
   const task = await Task.findByPk(req.params.id);
@@ -92,7 +92,19 @@ app.get("/tasks/:taskId/delete", async (req, res) => {
   res.redirect(`/projects/${projectId}`);
 });
 
+app.get("/tasks/:id/edit", async (req, res) => {
+  const task = await Task.findByPk(req.params.id);
+  const users = await User.findAll();
+  res.render("edit", { task, users });
+});
+
+app.post("/tasks/:id/edit", async (req, res) => {
+  const task = await Task.findByPk(req.params.id);
+  const projectId = task.ProjectId;
+  await task.update(req.body);
+  res.redirect(`/projects/${projectId}`);
+});
+
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
-
