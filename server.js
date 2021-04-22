@@ -114,3 +114,15 @@ app.patch('/tasks/:taskId', async (req, res) => {
   console.log(task)
   res.sendStatus(200);
 });
+
+app.get("/tasks/:id/edit", async (req, res) => {
+  const task = await Task.findByPk(req.params.id);
+  const users = await User.findAll();
+  res.render("edit", { task, users });
+});
+app.post("/tasks/:id/edit", async (req, res) => {
+  const task = await Task.findByPk(req.params.id);
+  const projectId = task.ProjectId;
+  await task.update(req.body);
+  res.redirect(`/projects/${projectId}`);
+});

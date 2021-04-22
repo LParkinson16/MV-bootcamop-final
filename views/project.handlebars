@@ -29,6 +29,8 @@
         <p>{{this.description}}</p>
          <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
          <a href="/tasks/{{this.id}}/delete">❌</a> 
+         <a href="/tasks/{{this.id}}/edit">Edit</a>
+
       </div>
     {{/each}}
 </div>
@@ -39,7 +41,8 @@
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
         <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
-         <a href="/tasks/{{this.id}}/delete">❌</a> 
+         <a href="/tasks/{{this.id}}/delete">❌</a>
+         <a href="/tasks/{{this.id}}/edit">Edit</a> 
       </div>
     {{/each}}
 </div>
@@ -50,7 +53,8 @@
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
         <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
-         <a href="/tasks/{{this.id}}/delete">❌</a> 
+         <a href="/tasks/{{this.id}}/delete">❌</a>
+         <a href="/tasks/{{this.id}}/edit">Edit</a> 
       </div>
     {{/each}}
 </div>

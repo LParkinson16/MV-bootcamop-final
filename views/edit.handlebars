@@ -1,0 +1,15 @@
+<h2>To-Do</h2>
+  <form action="/tasks/{{task.id}}/edit" method="POST">
+    <label>
+      Description:
+      <input value ="{{task.description}}" type="text" name="description">
+    </label><br>
+    <label>Assigned To:
+      <select name="UserId" id="UserId">
+        {{#each users}}
+      <option name="UserId" value={{this.id}}>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <button type="submit">Update task</button>
+  </form>
