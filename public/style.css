@@ -31,10 +31,11 @@ header {
   height: 60px;
 }
 
-
 .containers {
+  margin: 10px;
   display: flex;
   flex: 1;
+  /* margin: auto; */
   width: 100%;
   overflow-x: scroll;
 }
@@ -44,10 +45,9 @@ header {
   flex-flow: column;
   flex: 1;
   border-radius: 5px;
-
-  width: 100%;
-  min-width: 250px;
-  max-width: 350px;
+  /* width: 100%; */
+  /* min-width: 250px;
+  max-width: 350px; */
   height: 100%;
   min-height: 150px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -84,6 +84,90 @@ article {
   width: 100%;
 }
 
+h1 {
+  text-align: center;
+  margin-top: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+button {
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  padding: 15px;
+}
+
+.home-btns {
+  padding: 15px;
+  text-align: center;
+  margin: 10px;
+}
+
+.home-btn {
+  margin: 15px;
+}
+
+.project-btn {
+  position: absolute;
+  display: inline;
+  margin-bottom: 10px;
+}
+
+.update-btn,
+.user-btn {
+  margin-top: 40px;
+}
+
+.add-btn {
+  padding: 8px;
+}
+
+.add-task-form {
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.card {
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.row {
+  margin: 0 -5px;
+}
+
+.container a {
+  color: #000;
+}
+
+.task-card {
+  text-align: center;
+  background-color: #fff;
+  margin: auto;
+  margin-top: 20px;
+  border: solid #000 2px;
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+}
+
+.task-card form input {
+  margin: 10px;
+}
 
 /*comment 
   /* css overrides for mid-sized screens goes here */
