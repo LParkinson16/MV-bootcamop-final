@@ -3,37 +3,6 @@ const containers = document.querySelectorAll('.container')
 const toDo = document.querySelector('#toDoDiv')
 
 
-
-//unused function to add new columns
-/*
-const divGetter = document.querySelector('.containers')
-function addFunction(){
-let divAdd = document.createElement('div');
-divAdd.classList.add("container");
-//let text = document.createTextNode('Test');
-//divAdd.appendChild(text);
-divGetter.appendChild(divAdd);
-}
-*/
-
-//unused function to delete elements
-/*
-function myFunction() {
-  var myobj = document.querySelector(".draggable");
-  myobj.remove();
-}
-*/
-
-//unused function to create new draggable elements
-/*
-function newItem(){
-  let pItem = document.createElement('p');
-  pItem.classList.add('draggable');
-  pItem.setAttribute("draggable", "true");
-  toDo.appendChild(pItem)
-}
-*/
-
 //making elements draggable
 draggables.forEach(draggable => {
   draggable.addEventListener('dragstart', () => {
@@ -72,3 +41,14 @@ function getDragAfterElement(container, y) {
   }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
+//
+const task = Task.findByPk(req.params.taskId)
+task.addEventListener('drop', async (event) => {
+  const taskId = event.currentTarget.attribute.taskId;
+  const column = event.currentTarget.parent.attribute.state;
+  fetch(`/tasks/${taskId}`, {
+      method: 'PATCH',
+      'content-type': 'application/json',
+      body: JSON.stringify({ column })
+  })
+});

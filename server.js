@@ -102,3 +102,12 @@ app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
+//
+app.patch('/tasks/:taskId', (req, res) => {
+  const id = req.params.taskId;
+  const newColumn = req.body.column;
+  const task = Task.findByPk(id);
+  task.column = newColumn;
+  task.update();
+  res.sendStatus(200);
+});
