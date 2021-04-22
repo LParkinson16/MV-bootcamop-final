@@ -48,9 +48,6 @@ app.post("/users", async (req, res) => {
   res.redirect("/");
 });
 
-// app.get("/tasks/new", async (req, res) => {
-//   res.render("newTask");
-// });
 
 app.post("/projects/:id/tasks", async (req, res) => {
   const projectId = req.params.id;
@@ -100,19 +97,3 @@ app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
-
-// task.addEventListener('click', async (event) => {
-//   const taskId = event.currentTarget.attribute.taskId;
-//   const column = event.currentTarget.currentTarget.parent.attribute.state
-//   fetch (`/tasks/${taskId}`, {
-//     method: 'PATCH',
-//     body: ''
-//   })
-// })
-
-// app.patch('/tasks/:taskId', (req, res) => {
-//   const id = req.params.taskId
-// })
-
-//<span state="inProgress">
-  //<span class="task" taskId="57"></span>
