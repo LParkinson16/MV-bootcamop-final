@@ -63,3 +63,23 @@ async function seedData() {
 }
 
 seedData();
+
+const task = Task.findByPk(req.params.taskId)
+task.addEventListener('drop', async (event) => {
+  const taskId = event.currentTarget.attribute.taskId;
+  const column = event.currentTarget.parent.attribute.state;
+  fetch(`/tasks/${taskId}`, {
+      method: 'PATCH',
+      'content-type': 'application/json',
+      body: JSON.stringify({ column })
+  })
+});
+
+app.patch('/tasks/:taskId', (req, res) => {
+  const id = req.params.taskId;
+  const newColumn = req.body.column;
+  const task = Task.findByPk(id);
+  task.column = newColumn;
+  task.update();
+  res.sendStatus(200);
+});

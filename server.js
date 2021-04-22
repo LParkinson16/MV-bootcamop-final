@@ -13,7 +13,7 @@ const handlebars = expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 
-sequelize.sync();
+sequelize.sync({force:true});
 
 const app = express();
 const port = 4000;
@@ -97,6 +97,7 @@ app.get("/projects/:id/delete", async (req, res) => {
   project.destroy();
   res.redirect(`/`);
 });
+
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
