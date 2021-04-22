@@ -1,9 +1,13 @@
 <header>
-  <h1>{{project.name}}</h1>
+  <h1>{{project.name}}</h1><br>
+  <main>{{project.description}}</main>
 </header>
+  <a href="/">
+      <button>All projects</button>
+  </a>
 <div class="app">
   <div class="containers">
-
+    
 <div class="container" id="toDoDiv">
   <h2>To-Do</h2>
   <form action="/projects/{{project.id}}/tasks" method="POST">
