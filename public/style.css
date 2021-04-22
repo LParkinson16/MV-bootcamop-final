@@ -63,6 +63,26 @@ header {
   border-radius: 50%;
 }
 
+.draggable:hover{
+  transition: 0.5s;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+button{
+    border:none;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin-left:0.5em;
+    margin-right:0.5em;
+    transition: all 0.5s;
+}
+
+button:hover{
+    transform: translateY(-0.30em);
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    cursor:pointer;
+}
+
 /*comment 
   /* css overrides for mid-sized screens goes here */
 /*
