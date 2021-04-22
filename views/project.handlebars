@@ -24,6 +24,7 @@
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
         <p>{{this.User.name}}</p>
+         <a href="/tasks/{{this.id}}/delete">❌</a> 
       </div>
     {{/each}}
 </div>
