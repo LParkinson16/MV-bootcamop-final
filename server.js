@@ -48,7 +48,6 @@ app.post("/users", async (req, res) => {
   res.redirect("/");
 });
 
-
 app.post("/projects/:id/tasks", async (req, res) => {
   const projectId = req.params.id;
   await Task.create({
