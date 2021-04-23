@@ -1,21 +1,22 @@
 <title>All Projects</title>
 <h1>All Projects</h1>
 <html lang="en">
-    <a href="/projects/new">Add project</a>
-<a href="users/new"></a>
-    <button>Add New User</button>
+    <div class="home-btns">
+    <button class="home-btn"><a href="/projects/new">Add Project</a></button>
+    <button class="home-btn"><a href="users/new">Add New User</a></button>
+    </div>
 {{#each projects}}
-    <section>
-        <div class="container"> 
-            <a href="/projects/{{this.id}}">
-                <p>{{this.name}}</p>
-            </a><br>
-            <article>
-                <p>{{this.description}}</p>
-                <a href="/projects/{{this.id}}/delete">❌</a>
-            </article>
-        </div>
-        </section>
+<div class="row">
+  <div class="column">
+    <div class="card">
+     <div class="container"> 
+            <a href="/projects/{{this.id}}"> <p>{{this.name}}</p></a>
+            <p>{{this.description}}</p>
+            <a href="/projects/{{this.id}}/delete">❌</a>
+     </div>
+    </div>
+  </div>
+  </div>
 {{/each}}
 
 </html>
