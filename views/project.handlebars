@@ -1,3 +1,4 @@
+<title>{{project.name}}</title>
  <button class="project-btn"><a href="/">All projects</a></button>
   <h1>{{project.name}}</h1><br>
   <p id="desc">{{project.description}}</p><br>
@@ -8,7 +9,7 @@
       <input type="text" name="description"><br>
     </label><br>
     <label>Assigned To:
-      <select name="UserId" id="UserId">
+      <select name="UserId" id="UserId">   
         {{#each users}}
       <option name="UserId" value={{this.id}}>{{this.name}}</option>
         {{/each}}
@@ -25,7 +26,7 @@
     {{#each columns.todo}}
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
-         <p>  <img class= "img" src="{{this.User.avatar}}"> {{this.User.name}}</p> 
+         <p>  <img class="img" src="{{this.User.avatar}}"> {{this.User.name}}</p> 
          <a href="/tasks/{{this.id}}/delete">❌</a> 
          <a href="/tasks/{{this.id}}/edit">Edit</a>
       </div>
@@ -37,7 +38,7 @@
     {{#each columns.inProgress}}
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
-        <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
+        <p>  <img class= "img" src="{{this.User.avatar}}"> {{this.User.name}}</p> 
          <a href="/tasks/{{this.id}}/delete">❌</a>
          <a href="/tasks/{{this.id}}/edit">Edit</a> 
       </div>
@@ -49,7 +50,7 @@
       {{#each columns.done}}
       <div class="draggable task" draggable="true" taskId="{{this.id}}">
         <p>{{this.description}}</p>
-        <p>  <img class= "img" src="{{this.User.avatar}}" alt="avatar-img"> {{this.User.name}}</p> 
+        <p>  <img class= "img" src="{{this.User.avatar}}"> {{this.User.name}}</p> 
          <a href="/tasks/{{this.id}}/delete">❌</a>
          <a href="/tasks/{{this.id}}/edit">Edit</a> 
       </div>
