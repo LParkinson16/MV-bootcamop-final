@@ -60,8 +60,8 @@ app.post("/projects/:id/tasks", async (req, res) => {
 });
 
 const dragStart = (event) => {
-  event.target.className += 'hold';
-}
+  event.target.className += "hold";
+};
 
 app.get("/tasks/:id", async (req, res) => {
   const task = await Task.findByPk(req.params.id);
@@ -98,15 +98,12 @@ app.get("/projects/:id/delete", async (req, res) => {
   res.redirect(`/`);
 });
 
-app.patch('/tasks/:taskId', async (req, res) => {
+app.patch("/tasks/:taskId", async (req, res) => {
   const id = req.params.taskId;
   const newColumn = req.body.column;
-  console.log(newColumn)
   const task = await Task.findByPk(id);
-  console.log(task)
   task.state = newColumn;
   await task.save();
-  console.log(task)
   res.sendStatus(200);
 });
 
