@@ -2,12 +2,13 @@
 <div class="task-card">
 <form action="/projects" method="POST">
     <label>Name:</label><br>
-    <input type="text" name="name"><br>
+    <input type="text" name="name" required><br>
 
     <label>Description:</label><br>
-    <input type="text" name="description"><br><br>
+    <input type="text" name="description" required><br><br>
 
    <button type="submit">Submit</button>
   
-</form>
+</form><br>
+<button class="home-btn"><a href="/">Back to Projects</a></button>
 </div>

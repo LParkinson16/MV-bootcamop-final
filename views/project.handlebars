@@ -5,10 +5,10 @@
       <form class="add-task-form" action="/projects/{{project.id}}/tasks" method="POST">
     <label>
       Description:
-      <input type="text" name="description"><br>
+      <input type="text" name="description" required><br>
     </label><br>
     <label>Assigned To:
-      <select name="UserId" id="UserId">
+      <select name="UserId" id="UserId" required>
         {{#each users}}
       <option name="UserId" value={{this.id}}>{{this.name}}</option>
         {{/each}}
